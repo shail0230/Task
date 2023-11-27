@@ -1,0 +1,44 @@
+
+{% load static %}
+{% block content %}
+    <h1>Todo List</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Todo List</h1>
+
+        <!-- Form for adding new tasks -->
+        <form id="taskForm" action="{% url 'todo' %}" method="post">
+            {% csrf_token %}
+            <label for="taskInput">New Task:</label>
+            <input type="text" id="taskInput" name="task_text" required>
+    
+    <label for="statusDropdown">Status:</label>
+    <select id="statusDropdown" name="task_status">
+        <option value="incomplete">Incomplete</option>
+        <option value="delayed">Delayed</option>
+        <option value="in-progress">In Progress</option>
+        <option value="closed">Closed</option>
+    </select>
+
+    <button type="submit">Add Task</button>
+</form>
+
+<ul>
+        {% for task in tasks %}
+            <li>{{ task.task_text }} - {{ task.task_status }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

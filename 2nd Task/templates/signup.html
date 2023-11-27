@@ -1,0 +1,192 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("{% static 'c2.jpg' %}") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+       form .messages {
+    list-style-type: none;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+form .success {
+    color: green;
+}
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      text-align: center;
+      font-weight: bold;
+    }
+
+
+    header .logo a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+     header .navigation {
+      display: flex;
+      align-items: center;
+    }
+
+    header .navigation a {
+      margin-right: 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+   
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+    }
+
+ 
+
+    form label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+     
+
+    form button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+  <title>To-Do List</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="#">Sign up Page</a>
+    </div>
+
+    <div class="navigation">
+      <div class="dropdown">
+        <a href="{% url 'home' %}">Home</a>
+      </div>
+    </div>
+    
+  </header>
+
+  <form action="{% url 'signup' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="first_name" class="form-label">First Name:</label>
+      <input type="text" id="first_name" name="first_name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="last_name" class="form-label">Last Name:</label>
+      <input type="text" id="last_name" name="last_name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Address:</label>
+      <textarea id="address" name="address" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="dob" class="form-label">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" id="password" name="password" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="confirm_password" class="form-label">Confirm Password:</label>
+      <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label d-block">Gender:</label>
+      <div class="form-check form-check-inline">
+        <input type="radio" id="male" name="gender" value="male"  required>
+        <label for="male" >Male</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input type="radio" id="female" name="gender" value="female"  required>
+        <label for="female" >Female</label>
+      </div>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" id="terms" name="terms"  required>
+      <label for="terms" >I agree to the terms and conditions</label>
+    </div>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+  </form>
+
+  <footer>
+    <p>&copy; 25/11/2023  Shailesh S Yadav</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    header .logo a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header .navigation {
+      display: flex;
+      align-items: center;
+    }
+
+    header .navigation a {
+      margin-right: 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    header .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    header .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    header .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+  <title>To-Do List</title>
+</head>
+<body>
+  <header>
+    <div class="navigation">
+      <div class="dropdown">
+        <a href="{% url 'login' %}">Login</a>
+      </div>
+    </div>
+    <div class="logo">
+      <a href="#">To-Do List</a>
+    </div>
+    <div class="navigation">
+      <div class="dropdown">
+        <a href="{% url 'signup' %}">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="slideshow-container">
+    <div class="slide">
+      <img src="{% static 'c6.jpg' %}" alt="Slide 3">
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 25/11/2023  Shailesh S Yadav</p>
+  </footer>
+</body>
+</html>
